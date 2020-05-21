@@ -1,0 +1,153 @@
+$color1: #1199ee;
+$color2: #cccccc;
+
+* {
+    box-sizing: border-box; 
+}
+
+:root {
+    --color1: #1199ee;
+}
+
+body {
+    font-family: sans-serif, Arial;
+    margin: 15px;
+}
+
+.form-title {
+    margin-bottom: 1.5rem;
+    font-size: 1.75rem;
+    border-bottom: 1px solid $color1;
+    font-weight: bold;
+    color: var(--color1);
+}
+
+.form {
+    display: grid;
+    grid-template-columns: 1fr;
+    column-gap: 15px;
+    row-gap: 15px;
+    
+
+    label {
+        color: #111111;
+    }
+
+    .full {
+        display: flex;
+        /* 1 / -1 : commence à 1, -1 permet d'être sur toute la largeur */
+        grid-column: 1 / -1;
+        flex-direction: column;
+    }
+
+    .full > * {
+        /* espacement garanti quelque soit la largeur */
+        margin-right: 16px;
+        margin-bottom: 16px;
+    }
+
+    .form-group-align-right {
+        justify-self: flex-end;
+        grid-column-end: -1;
+    }
+
+    .form-group-textarea {
+        /* prend 2 lignes dans la grid */
+        grid-row-end: span 2;
+    }
+}
+
+.form-group {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-gap: 8px;
+    align-content: flex-start;
+
+    label {
+        display: block;
+    }
+
+    .form-control {
+        
+    }
+
+    input[type=text], textarea {
+        width: 100%;
+        padding: 0.5rem 0.75rem;
+        font-size: 1.2rem;
+    }
+
+    textarea {
+        resize: none;
+    }
+
+    input[type=checkbox] {
+        margin-right: 8px;
+    }
+
+    input, textarea {
+        border: 1px solid $color2;
+        border-radius: 10px;
+    }
+
+    input:focus, textarea:focus {
+        border: 1px solid $color1;
+    }
+
+    input:invalid, textarea:invalid {
+        border: 1px solid #ff0000;
+    }
+    /* commenter car prend le pas sur les styles de base et :focus */
+/*
+    input:valid, textarea:valid {
+        border: 1px solid #00ff00;
+    }
+*/
+    
+}
+
+.form-group.form-check {
+    display: flex;
+    align-items: center;
+    justify-items: start;
+
+    label {
+        display: inline;
+    }
+
+    .form-control {
+        display: inline;
+    }
+}
+
+.btn {
+    padding: 15px 25px;
+    text-align: center;
+    font-size: 1.2rem;
+    font-weight: bold;
+    border-radius: 5px;
+    box-shadow: 8px 4px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn-primary {
+    background-color: $color1;
+    color: #ffffff;
+}
+
+
+@media all and (min-width: 600px) {
+    .form {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+
+@media all and (min-width: 800px) {
+    .form {
+        grid-template-columns: repeat(3, 1fr);
+
+        .full {
+            flex-direction: row;
+        }
+    }
+}
